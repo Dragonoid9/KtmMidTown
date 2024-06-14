@@ -1,0 +1,33 @@
+/* Basic Reset */
+body, h2, a, img {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header content styling */
+.header-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    color: white;
+    padding: 15px 20px;
+    position: fixed; /* Fixed position */
+    top: 0; /* Fixed to the top */
+    left: 0;
+    width: 100%; /* Full width */
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+.header-title {
+    flex-grow: 1;
+    text-align: center;
+    margin-left: -100px; /* Adjust this as needed */
+}
+
+.nav-logo {
+    position: absolute;
+    left: 10px;
+    height: 60px;
+}

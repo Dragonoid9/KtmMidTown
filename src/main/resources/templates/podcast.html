@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAC Ktm Mid-Town PodCast</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/navcircle.css">
+    <script src="/javascript/circle.js" defer></script>
+    <style>
+        /* Utility classes */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="header-content">
+    <!-- Logo Image -->
+    <img src="/images/midtown.png" alt="Rotaract Club Logo" class="nav-logo">
+    <!-- Club Title -->
+    <h2 class="header-title">Rotaract Club of Kathmandu Mid-Town</h2>
+</div>
+
+<div class="navbar">
+    <ul>
+        <li class="nav-item"><a class="nav-link" href="/rac/homePage">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/rac/events">Events</a></li>
+        <li class="nav-item"><a class="nav-link" href="/rac/news">News</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Podcast</a></li>
+        <li class="nav-item"><a class="nav-link" href="/rac/about">About</a></li>
+        <li class="nav-item" th:if="${isLoggedIn}"><a class="nav-link" href="/rac/admin">Admin</a></li>
+    </ul>
+    <div class="user-menu" th:if="${isLoggedIn}">
+        <div class="user-circle" onclick="toggleDropdownMenu()">
+            <span th:text="${session.user.charAt(0)}">U</span> <!-- Displays the first letter of the username -->
+        </div>
+        <div class="dropdown-menu" id="userDropdown">
+            <a th:href="@{/rac/profile(username=${session.user})}">Profile</a>
+            <a href="/rac/logout">Logout</a>
+        </div>
+    </div>
+    <!-- Display based on login status -->
+    <div th:if="${!isLoggedIn}">
+        <form method="post" role="form" th:action="@{/rac/login}" class="form">
+            <div class="form-inline">
+                <div class="form-controls">
+                    <input class="form-control" type="text" name="identifier" placeholder="Username">
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+                </div>
+                <div class="login-group">
+                    <button class="btn">Login</button>
+                    <a class="signup-link" href="/rac/register">Not registered? Sign up</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Welcome to Our PodCast Page!</h1>
+    <p>Feel free to explore the features of our application!</p>
+</div>
+<footer class="footer">
+    <p>© 2024 Rotaract Club of Kathmandu Mid-Town. All rights reserved.</p>
+</footer>
+</body>
+</html>

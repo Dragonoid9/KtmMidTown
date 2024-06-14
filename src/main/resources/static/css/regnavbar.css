@@ -1,0 +1,107 @@
+/* Navigation styling */
+.navbar {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed; /* Fixed position */
+    top: 58px; /* Adjust based on header height */
+    left: 0;
+    width: 100%; /* Full width */
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+.nav-item {
+    list-style: none;
+    display: inline;
+    margin-left: 20px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+/* Form styling */
+.profile-content {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 500px; /* Set maximum width for the form */
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.form-box {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 500px; /* Set maximum width for the form */
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    width: 100%; /* Full width of the form-group */
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box; /* Include padding and border in the width and height */
+}
+
+.btn {
+    padding: 10px 15px;
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+.btn:hover {
+    background-color: darkgreen;
+}
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px; /* Add margin at the bottom */
+    display: flex;
+    justify-content: center; /* Center the form box horizontally */
+}
+
+.error-message {
+    position: fixed;
+    top: 50%; /* Place the message at the vertical center of the viewport */
+    left: 50%; /* Place the message at the horizontal center of the viewport */
+    transform: translate(-50%, -50%); /* Center the message */
+    background-color: #ffcccc; /* Red background color */
+    color: #ff0000; /* Red text color */
+    padding: 10px; /* Add padding */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    border: 1px solid #ff0000; /* Red border */
+    z-index: 9999; /* Ensure the message appears on top of other content */
+}
+
+.error-message {
+    color: #ff0000; /* Red warning sign color */
+    font-weight: bold; /* Make the warning sign bold */
+}

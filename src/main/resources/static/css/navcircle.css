@@ -1,0 +1,39 @@
+.user-menu {
+    position: relative;
+    display: inline-block;
+    margin-right: 45px;
+
+}
+
+.user-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #666;
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    /*min-width: 160px;*/
+    width: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-left: -20px;
+    overflow: hidden;
+}
+
+.dropdown-menu a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-menu a:hover {background-color: #f1f1f1}
