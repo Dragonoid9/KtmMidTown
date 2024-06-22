@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAC Ktm Mid-Town Admin</title>
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/navcircle.css">
+
+
+
+    <script src="/javascript/circle.js" defer></script>
+    <script src="/javascript/logout.js" defer></script>
+    <script src="/javascript/token.js" defer></script>
+</head>
+<body>
+<div class="header-content">
+    <img src="/images/midtown.png" alt="Rotaract Club Logo" class="nav-logo">
+    <h2 class="header-title">Rotaract Club of Kathmandu Mid-Town</h2>
+</div>
+
+<div class="navbar">
+    <ul class="nav">
+        <li class="nav-item"><a class="nav-link" href="/rac/homePage">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/rac/events">Events</a></li>
+        <li class="nav-item"><a class="nav-link" href="/rac/news">News</a></li>
+        <li class="nav-item"><a class="nav-link" href="/rac/podcast">Podcast</a></li>
+        <li class="nav-item"><a class="nav-link" href="/rac/about">About</a></li>
+        <li class="nav-item" th:if="${isLoggedIn}"><a class="nav-link" href="#">Admin</a></li>
+    </ul>
+    <div class="user-menu" th:if="${isLoggedIn}">
+        <div class="user-circle" onclick="toggleDropdownMenu()">
+            <span th:text="${username.charAt(0)}">U</span>
+        </div>
+        <div class="dropdown-menu" id="userDropdown">
+            <a th:href="@{/rac/profile(username=${username})}">Profile</a>
+            <a id="logout-link" href="#" onclick="document.getElementById('logout-form').submit();">Logout</a>
+            <form id="logout-form" action="/rac/logout" method="post" style="display: none;">
+                <input type="hidden" name="_method" value="post">
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="admin-container">
+    <div class="sidebar">
+        <ul class="nav">
+            <li class="nav-item"><a class="nav-link" href="/rac/post/listpost">Events</a></li>
+            <li class="nav-item"><a class="nav-link" href="/rac/news/listnews">News</a></li>
+            <li class="nav-item"><a class="nav-link" href="/rac/podcast/listpodcast">Podcast</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <h2>Podcast Management</h2>
+        <a href="/rac/podcast/create">Create New Podcast</a>
+        <div class="table-container">
+            <h5>Podcast</h5>
+            <table>
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Link</th>
+                    <th>Created By</th>
+                    <th>Updated By</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="podcast, iterStat : ${podcast}">
+                    <td th:text="${iterStat.index + 1}"></td>
+                    <td th:text="${podcast.title}">Title</td>
+                    <td class="description" th:text="${podcast.description}">Description</td>
+                    <td><a th:href="${podcast.link}" target="_blank" th:text="${podcast.link}">Link</a></td>
+                    <td th:text="${podcast.createdBy}"></td>
+                    <td th:text="${podcast.updatedBy}"></td>
+                    <td>
+                        <img th:if="${podcast.imageUrl}" th:src="${podcast.imageUrl}" alt="Podcast Image" class="img-thumbnail"/>
+                        <span th:if="${podcast.imageUrl == null}">No Image</span>
+                    </td>
+                    <td>
+                        <a class="btn" th:href="@{/rac/podcast/edit/{id}(id=${podcast.id})}">Edit</a>
+                        <a class="btn btn-danger" th:href="@{/rac/podcast/delete/{id}(id=${podcast.id})}" onclick="return confirm('Are you sure you want to delete this podcast?');">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<footer class="footer text-center">
+    <p>© 2024 Rotaract Club of Kathmandu Mid-Town. All rights reserved.</p>
+</footer>
+</body>
+</html>

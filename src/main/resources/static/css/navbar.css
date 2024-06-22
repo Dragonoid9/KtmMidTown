@@ -1,0 +1,100 @@
+/* Navigation styling */
+.navbar {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed; /* Fixed position */
+    top: 58px; /* Adjust based on header height */
+    left: 0;
+    width: 100%; /* Full width */
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+.nav-item {
+    list-style: none;
+    display: inline;
+    margin-left: 20px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.signup-link {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-link:hover, .signup-link:hover {
+    text-decoration: underline;
+}
+
+/* Form styling */
+.form-inline {
+    display: flex;
+    align-items: center;
+}
+
+.form-controls {
+    display: flex;
+    align-items: center;
+}
+
+.form-control {
+    margin-right: 22px;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.login-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 25px;
+}
+
+.signup-link {
+    margin-top: 4px;
+    font-size: 0.7rem;
+}
+
+.btn {
+    padding: 5px 10px;
+    width: 50px;
+    height: 17px;
+    line-height: 9px;
+    text-align: center;
+    margin-right: 8px;
+    margin-top: 6px;
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: darkgreen;
+}
+.error-message {
+    position: fixed;
+    top: 10%; /* Place the message at the vertical center of the viewport */
+    left: 50%; /* Place the message at the horizontal center of the viewport */
+    transform: translate(-50%, -50%); /* Center the message */
+    background-color: #ffcccc; /* Red background color */
+    color: #ff0000; /* Red text color */
+    padding: 10px; /* Add padding */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    border: 1px solid #ff0000; /* Red border */
+    z-index: 9999; /* Ensure the message appears on top of other content */
+}
+
+.error-message {
+    color: #ff0000; /* Red warning sign color */
+    font-weight: bold; /* Make the warning sign bold */
+}

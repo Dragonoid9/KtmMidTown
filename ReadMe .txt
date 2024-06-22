@@ -1,0 +1,1 @@
+this one is valid up to login and logout and admin is accessible from the post man.

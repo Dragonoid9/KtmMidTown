@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAC Ktm Mid-Town About Us</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/navcircle.css">
+    <link rel="stylesheet" href="/css/about.css">
+    <script src="/javascript/circle.js" defer></script>
+    <script src="/javascript/logout.js" defer></script>
+    <script src="/javascript/token.js" defer></script>
+    <style>
+        /* Utility classes */
+        /*.container {*/
+        /*    width: 100%;*/
+        /*    max-width: 1200px;*/
+        /*    margin: auto;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div class="header-content">
+    <!-- Logo Image -->
+    <img src="/images/midtown.png" alt="Rotaract Club Logo" class="nav-logo">
+    <!-- Club Title -->
+    <h2 class="header-title">Rotaract Club of Kathmandu Mid-Town</h2>
+</div>
+
+<div class="navbar">
+    <ul>
+        <li class="nav-item"><a class="nav-link" href="/rac/homePage">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/rac/events">Events</a></li>
+        <li class="nav-item"><a class="nav-link" href="/rac/news">News</a></li>
+        <li class="nav-item"><a class="nav-link" href="/rac/podcast">Podcast</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+        <li class="nav-item" th:if="${isLoggedIn and role == 'admin'}"><a class="nav-link" href="/rac/admin">Admin</a></li>
+    </ul>
+    <div class="user-menu" th:if="${isLoggedIn}">
+        <div class="user-circle" onclick="toggleDropdownMenu()">
+            <span th:text="${username.charAt(0)}">U</span> <!-- Displays the first letter of the username -->
+        </div>
+        <div class="dropdown-menu" id="userDropdown">
+            <a th:href="@{/rac/profile(username=${username})}">Profile</a>
+            <a id="logout-link" href="#" onclick="document.getElementById('logout-form').submit();">Logout</a>
+            <form id="logout-form" action="/rac/logout" method="post" style="display: none;">
+                <input type="hidden" name="_method" value="post">
+            </form>
+        </div>
+    </div>
+    <!--     Display based on login status -->
+    <div th:if="${!isLoggedIn}">
+        <form method="post" role="form" th:action="@{/rac/login}" class="form">
+            <div class="form-inline">
+                <div class="form-controls">
+                    <input class="form-control" type="text" name="username" placeholder="Username">
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+                </div>
+                <div class="login-group">
+                    <p th:if="${loginError}" th:text="${loginError}" class="error-message"></p>
+                    <button class="btn">Login</button>
+                    <a class="signup-link" href="/rac/register">Not registered? Sign up</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <img src="/images/All.JPG" alt="Cover Image" class="cover-image">
+    <h1>Welcome to Our About Us Page</h1>
+    <p>Feel free to explore the features of our application!</p>
+    <div class="bod-container">
+        <p>BOARD MEMBER 2023-2024 </p>
+        <!-- President -->
+        <div class="bod-row president">
+            <div class="bod-member">
+                <img src="/path/to/president-image.jpg" onerror="this.onerror=null;this.src='/images/blank.png';" alt="President Name">
+                <h3>Rtr. Saroj Chimeriya</h3>
+                <p>President</p>
+                <br>
+
+                <img src="/path/to/president-image1.jpg" onerror="this.onerror=null;this.src='/images/blank.png';" alt="IPP Name">
+                <h3>Rtr. Sachita Maharjan</h3>
+                <p>Immediate Past President</p>
+            </div>
+        </div>
+
+        <!-- Other BOD Members -->
+        <div class="bod-row">
+            <div class="bod-member">
+                <img src="/path/to/member1-image.jpg" onerror="this.onerror=null;this.src='/images/blank.png';" alt="Member 1 Name">
+                <h3>Rtr. Keshab Raj Pokhrel</h3>
+                <p>Vice President </p>
+            </div>
+            <div class="bod-member">
+                <img src="/path/to/member2-image.jpg" onerror="this.onerror=null;this.src='/images/blank.png';" alt="Member 2 Name">
+                <h3>Rtr. Shreeya Dangol</h3>
+                <p>Vice President</p>
+            </div>
+            <div class="bod-member">
+                <img src="/path/to/member3-image.jpg" onerror="this.onerror=null;this.src='/images/blank.png';" alt="Member 3 Name">
+                <h3>Rtr. Swastika Parajuli</h3>
+                <p>Secretary</p>
+            </div>
+        </div>
+        <div class="bod-row">
+            <div class="bod-member">
+                <img src="/path/to/member4-image.jpg" onerror="this.onerror=null;this.src='/images/blank.png';" alt="Member 4 Name">
+                <h3>Rtr. Sabina Karki</h3>
+                <p>Joint Secretary</p>
+            </div>
+            <div class="bod-member">
+                <img src="/path/to/member5-image.jpg" onerror="this.onerror=null;this.src='/images/blank.png';" alt="Member 5 Name">
+                <h3>Rtr. Bishwajeet Shrestha</h3>
+                <p>Dir. Club Service</p>
+            </div>
+            <div class="bod-member">
+                <img src="/path/to/member6-image.jpg" onerror="this.onerror=null;this.src='/images/blank.png';" alt="Member 6 Name">
+                <h3>Rtr. Mamata Gurung</h3>
+                <p>Dir. Professional Development</p>
+            </div>
+            <div class="bod-member">
+                <img src="/path/to/member7-image.jpg" onerror="this.onerror=null;this.src='/images/blank.png';" alt="Member 7 Name">
+                <h3>Rtr. Aayusha Acharya</h3>
+                <p>Dir. International Service</p>
+            </div>
+        </div>
+        <div class="bod-row">
+            <div class="bod-member">
+                <img src="/path/to/member8-image.jpg" onerror="this.onerror=null;this.src='/images/blank.png';" alt="Member 8 Name">
+                <h3>Rtr. Arati Jaiswal</h3>
+                <p>Dir. Community Service</p>
+            </div>
+            <div class="bod-member">
+                <img src="/path/to/member9-image.jpg" onerror="this.onerror=null;this.src='/images/blank.png';" alt="Member 9 Name">
+                <h3>Rtr. Vivek Acharya</h3>
+                <p>Treasurer</p>
+            </div>
+            <div class="bod-member">
+                <img src="/path/to/member10-image.jpg" onerror="this.onerror=null;this.src='/images/blank.png';" alt="Member 10 Name">
+                <h3>Rtr. Pranisha Khatiwada</h3>
+                <p>Editor</p>
+            </div>
+            <div class="bod-member">
+                <img src="/path/to/member11-image.jpg" onerror="this.onerror=null;this.src='/images/blank.png';" alt="Member 11 Name">
+                <h3>Rtr. Anju Khatiwada</h3>
+                <p>Communication Officer</p>
+            </div>
+        </div>
+        <div class="bod-row">
+            <div class="bod-member">
+                <img src="/path/to/member12-image.jpg" onerror="this.onerror=null;this.src='/images/blank.png';" alt="Member 12 Name">
+                <h3>Rtr. Sadip Khadka</h3>
+                <p>Sergeant-At-Arms</p>
+            </div>
+            <div class="bod-member">
+                <img src="/path/to/member13-image.jpg" onerror="this.onerror=null;this.src='/images/blank.png';" alt="Member 13 Name">
+                <h3>Rtr. Purnima Khanal</h3>
+                <p>SAP Officer</p>
+            </div>
+            <div class="bod-member">
+                <img src="/path/to/member14-image.jpg" onerror="this.onerror=null;this.src='/images/blank.png';" alt="Member 14 Name">
+                <h3>Rtr. Puja Rana</h3>
+                <p>Partner-in-Service</p>
+            </div>
+            <div class="bod-member">
+                <img src="/path/to/member15-image.jpg" onerror="this.onerror=null;this.src='/images/blank.png';" alt="Member 15 Name">
+                <h3>Rtr.Pabitra Dangal</h3>
+                <p>Partner-in-Service</p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <hr>
+    <div class="social-media">
+        <p>Follow us on</p>
+        <!-- Social Media Links -->
+        <div class="social-media-links">
+            <a href="https://www.facebook.com/Rotaractclubofktmmidtown" target="_blank">
+                <img src="/images/facebook.png" alt="Facebook">
+            </a>
+            <a href="https://www.linkedin.com/in/YourProfile" target="_blank">
+                <img src="/images/linkedin.png" alt="LinkedIn">
+            </a>
+            <a href="https://www.instagram.com/rotaract_kathmandu_midtown?igsh=cWJucXlrNXZ6djFu" target="_blank">
+                <img src="/images/instagram.png" alt="Instagram">
+            </a>
+            <a href="https://www.youtube.com/@rackathmandumid-town775" target="_blank">
+                <img src="/images/youtube.png" alt="Youtube">
+            </a>
+            <a href="https://x.com/RacktmMidTown" target="_blank">
+                <img src="/images/twitter.png" alt="Twitter">
+            </a>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <p>© 2024 Rotaract Club of Kathmandu Mid-Town. All rights reserved.</p>
+</footer>
+</body>
+</html>
